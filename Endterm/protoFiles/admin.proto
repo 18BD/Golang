@@ -1,0 +1,24 @@
+syntax = "proto3";
+package libraryService;
+option go_package = "/libraryService";
+
+// Model
+message Admin {
+  int32 AdminID = 1;
+  string Login = 2;
+  string Password = 3;
+}
+
+// GET
+message GetAdminRequest {
+  int32 AdminID = 1;
+}
+
+message GetAdminResponse {
+  Admin Admin = 1;
+}
+
+service AdminService {
+  rpc GetAdmin(GetAdminRequest) returns (GetAdminResponse);
+}
+

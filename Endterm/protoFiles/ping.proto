@@ -1,0 +1,12 @@
+syntax = "proto3";
+package libraryService;
+option go_package = "/libraryService";
+
+message pingMessage {
+  string body = 1;
+}
+
+service PingService {
+  rpc Ping(pingMessage) returns (pingMessage);
+}
+

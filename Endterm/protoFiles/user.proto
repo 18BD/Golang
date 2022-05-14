@@ -1,0 +1,24 @@
+syntax = "proto3";
+package libraryService;
+option go_package = "/libraryService";
+
+// Model
+message User {
+  int32 UserID = 1;
+  string Login = 2;
+  string Password = 3;
+}
+
+// GET
+message GetUserRequest {
+  int32 UserID = 1;
+}
+
+message GetUserResponse {
+  User User = 1;
+}
+
+service UserService {
+  rpc GetUser(GetUserRequest) returns (GetUserResponse);
+}
+
