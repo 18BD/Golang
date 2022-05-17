@@ -1,0 +1,55 @@
+syntax = "proto3";
+package libraryService;
+option go_package = "/libraryService";
+
+// Method
+message UserBook {
+  int32 ID = 1;
+  int32 UserID = 2;
+  int32 BookID = 3;
+  string Title = 4;
+  string Status = 5;
+  bool Star = 6;
+}
+
+// GET
+message GetUserBooksRequest {
+}
+
+message GetUserBooksResponse {
+  repeated UserBook UserBooks = 1;
+}
+
+// POST
+message AddUserBookRequest {
+  UserBook UserBook = 1;
+}
+
+message AddUserBookResponse {
+  string response = 1;
+}
+
+// PUT
+message EditUserBookRequest {
+  UserBook UserBook = 1;
+}
+
+message EditUserBookResponse {
+  string response = 1;
+}
+
+// DELETE
+message DeleteUserBookRequest {
+  int32 ID = 1;
+}
+
+message DeleteUserBookResponse {
+  string response = 1;
+}
+
+service UserBookService {
+  rpc GetUserBook(GetUserBooksRequest) returns (GetUserBooksResponse);
+  rpc AddUserBook(AddUserBookRequest) returns (AddUserBookResponse);
+  rpc EditUserBook(EditUserBookRequest) returns (EditUserBookResponse);
+  rpc DeleteUserBook(DeleteUserBookRequest) returns (DeleteUserBookResponse);
+}

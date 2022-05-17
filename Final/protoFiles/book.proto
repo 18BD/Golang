@@ -1,0 +1,33 @@
+syntax = "proto3";
+package libraryService;
+option go_package = "/libraryService";
+
+// Model
+message Book {
+  int32 BookID = 1;
+  string Author = 2;
+  string Title = 3;
+  int32 Rating = 4;
+}
+
+// POST
+message AddBookRequest {
+  Book Book = 1;
+}
+
+message AddBookResponse {
+  string response = 1;
+}
+
+// GET
+message GetBooksRequest {
+}
+
+message GetBooksResponse {
+  repeated Book books = 1;
+}
+
+service BookService {
+  rpc AddBook(AddBookRequest) returns (AddBookResponse);
+  rpc GetBooks(GetBooksRequest) returns (GetBooksResponse);
+}
